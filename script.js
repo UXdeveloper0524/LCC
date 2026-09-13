@@ -21,15 +21,24 @@
   ];
 
   var $ = function (id) { return document.getElementById(id); };
+  var on = function (element, event, handler) { if (element) element.addEventListener(event, handler); };
   var navIds = ["home", "about", "specialties", "doctors", "packages", "contact"];
 
   /* ---------- navigation ---------- */
   var drawer = $("drawer");
   var drawerBackdrop = $("drawerBackdrop");
-  function closeDrawer() { drawer.classList.remove("is-open"); drawerBackdrop.hidden = true; }
-  $("menuOpen").addEventListener("click", function () { drawer.classList.add("is-open"); drawerBackdrop.hidden = false; });
-  $("menuClose").addEventListener("click", closeDrawer);
-  drawerBackdrop.addEventListener("click", closeDrawer);
+  function closeDrawer() {
+    if (!drawer) return;
+    drawer.classList.remove("is-open");
+    if (drawerBackdrop) drawerBackdrop.hidden = true;
+  }
+  on($("menuOpen"), "click", function () {
+    if (!drawer) return;
+    drawer.classList.add("is-open");
+    if (drawerBackdrop) drawerBackdrop.hidden = false;
+  });
+  on($("menuClose"), "click", closeDrawer);
+  on(drawerBackdrop, "click", closeDrawer);
 
   document.addEventListener("click", function (event) {
     var trigger = event.target.closest("[data-jump]");
@@ -41,7 +50,14 @@
 
   var header = $("siteHeader");
   var navButtons = document.querySelectorAll(".desktop-nav button");
+  var isInternal = document.body.classList.contains("is-internal");
+
   function onScroll() {
+    if (!header) return;
+    if (isInternal) {
+      header.classList.add("site-header--solid");
+      return;
+    }
     var closestId = "home";
     var closestDistance = Infinity;
     navIds.forEach(function (id) {
@@ -58,14 +74,15 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  $("backTop").addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+  on($("backTop"), "click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
 
-  /* ---------- hero carousel ---------- */
+  /* ---------- hero carousel (home) ---------- */
   var heroImages = document.querySelectorAll(".hero-image");
   var heroDots = document.querySelectorAll("#heroDots button");
   var heroCopy = $("heroCopy");
   var activeSlide = 0;
   function showSlide(index) {
+    if (!heroCopy) return;
     activeSlide = (index + slides.length) % slides.length;
     var slide = slides[activeSlide];
     heroImages.forEach(function (image, i) { image.classList.toggle("is-active", i === activeSlide); });
@@ -80,40 +97,44 @@
   heroDots.forEach(function (dot) {
     dot.addEventListener("click", function () { showSlide(Number(dot.getAttribute("data-slide"))); });
   });
-  setInterval(function () { showSlide(activeSlide + 1); }, 7000);
+  if (heroCopy) setInterval(function () { showSlide(activeSlide + 1); }, 7000);
 
   /* ---------- booking form ---------- */
   var dateInput = $("bookingDate");
-  dateInput.min = new Date().toISOString().split("T")[0];
+  if (dateInput) dateInput.min = new Date().toISOString().split("T")[0];
   var form = $("bookingForm");
   var formError = $("formError");
-  form.addEventListener("submit", function (event) {
+  on(form, "submit", function (event) {
     event.preventDefault();
     if (!form.checkValidity()) {
-      formError.textContent = "Please fill in the required details so we can find the right appointment for you.";
-      formError.hidden = false;
+      if (formError) {
+        formError.textContent = "Please fill in the required details so we can find the right appointment for you.";
+        formError.hidden = false;
+      }
       var invalid = form.querySelector(":invalid");
       if (invalid) invalid.focus();
       return;
     }
-    formError.hidden = true;
+    if (formError) formError.hidden = true;
     $("bookingPanel").hidden = true;
     $("bookingSuccess").hidden = false;
+    $("bookingSuccess").scrollIntoView({ behavior: "smooth", block: "center" });
   });
-  $("bookingReset").addEventListener("click", function () {
+  on($("bookingReset"), "click", function () {
     form.reset();
     $("bookingSuccess").hidden = true;
     $("bookingPanel").hidden = false;
   });
 
-  /* ---------- specialties ---------- */
+  /* ---------- specialties (home) ---------- */
   var specialtyButtons = document.querySelectorAll("#specialtyList button");
   var specialtyIndex = 0;
   function showSpecialty(index) {
+    var image = $("specialtyImage");
+    if (!image) return;
     specialtyIndex = (index + specialties.length) % specialties.length;
     var item = specialties[specialtyIndex];
     specialtyButtons.forEach(function (button, i) { button.classList.toggle("is-active", i === specialtyIndex); });
-    var image = $("specialtyImage");
     image.src = item.image;
     image.alt = item.name;
     image.style.animation = "none";
@@ -126,12 +147,13 @@
   specialtyButtons.forEach(function (button) {
     button.addEventListener("click", function () { showSpecialty(Number(button.getAttribute("data-specialty"))); });
   });
-  $("specialtyPrev").addEventListener("click", function () { showSpecialty(specialtyIndex - 1); });
-  $("specialtyNext").addEventListener("click", function () { showSpecialty(specialtyIndex + 1); });
+  on($("specialtyPrev"), "click", function () { showSpecialty(specialtyIndex - 1); });
+  on($("specialtyNext"), "click", function () { showSpecialty(specialtyIndex + 1); });
 
-  /* ---------- reviews ---------- */
+  /* ---------- reviews (home) ---------- */
   var reviewIndex = 0;
   function showReview(index) {
+    if (!$("reviewCopy")) return;
     reviewIndex = (index + reviews.length) % reviews.length;
     var review = reviews[reviewIndex];
     $("reviewInitials").textContent = review.initials;
@@ -139,41 +161,91 @@
     $("reviewCopy").textContent = "\u201C" + review.copy + "\u201D";
     $("reviewCount").textContent = "0" + (reviewIndex + 1) + " / 0" + reviews.length;
   }
-  $("reviewPrev").addEventListener("click", function () { showReview(reviewIndex - 1); });
-  $("reviewNext").addEventListener("click", function () { showReview(reviewIndex + 1); });
+  on($("reviewPrev"), "click", function () { showReview(reviewIndex - 1); });
+  on($("reviewNext"), "click", function () { showReview(reviewIndex + 1); });
 
-  /* ---------- instagram load more ---------- */
+  /* ---------- instagram load more (home) ---------- */
   var extras = document.querySelectorAll(".insta-extra");
   var loadMore = $("loadMore");
   var expanded = false;
-  loadMore.addEventListener("click", function () {
+  on(loadMore, "click", function () {
     expanded = !expanded;
     extras.forEach(function (tile) { tile.hidden = !expanded; tile.classList.add("is-visible"); });
     loadMore.childNodes[0].nodeValue = expanded ? "Show less " : "Load more ";
   });
 
+  /* ---------- doctor filters ---------- */
+  var filterRow = $("doctorFilters");
+  var doctorGrid = $("doctorGrid");
+  if (filterRow && doctorGrid) {
+    var pills = filterRow.querySelectorAll(".filter-pill");
+    var cards = doctorGrid.querySelectorAll(".doctor-card");
+    var emptyState = $("doctorEmpty");
+    filterRow.addEventListener("click", function (event) {
+      var pill = event.target.closest(".filter-pill");
+      if (!pill) return;
+      var value = pill.getAttribute("data-filter");
+      pills.forEach(function (item) {
+        var isActive = item === pill;
+        item.classList.toggle("is-active", isActive);
+        item.setAttribute("aria-pressed", String(isActive));
+      });
+      var visible = 0;
+      cards.forEach(function (card) {
+        var match = value === "all" || card.getAttribute("data-tag") === value;
+        card.hidden = !match;
+        if (match) { visible += 1; card.classList.add("is-visible"); }
+      });
+      if (emptyState) emptyState.hidden = visible !== 0;
+    });
+  }
+
+  /* ---------- accordions ---------- */
+  document.querySelectorAll("[data-accordion]").forEach(function (accordion) {
+    accordion.addEventListener("click", function (event) {
+      var trigger = event.target.closest(".accordion-trigger");
+      if (!trigger) return;
+      var panel = document.getElementById(trigger.getAttribute("aria-controls"));
+      var isOpen = trigger.getAttribute("aria-expanded") === "true";
+      accordion.querySelectorAll(".accordion-trigger").forEach(function (other) {
+        other.setAttribute("aria-expanded", "false");
+        var otherPanel = document.getElementById(other.getAttribute("aria-controls"));
+        if (otherPanel) otherPanel.hidden = true;
+      });
+      if (!isOpen) {
+        trigger.setAttribute("aria-expanded", "true");
+        if (panel) panel.hidden = false;
+      }
+    });
+  });
+
   /* ---------- modals ---------- */
   var lightboxModal = $("lightboxModal");
   var videoModal = $("videoModal");
-  function openModal(modal) { modal.hidden = false; document.body.style.overflow = "hidden"; }
-  function closeModals() { lightboxModal.hidden = true; videoModal.hidden = true; document.body.style.overflow = ""; }
+  function openModal(modal) { if (!modal) return; modal.hidden = false; document.body.style.overflow = "hidden"; }
+  function closeModals() {
+    if (lightboxModal) lightboxModal.hidden = true;
+    if (videoModal) videoModal.hidden = true;
+    document.body.style.overflow = "";
+  }
 
   document.addEventListener("click", function (event) {
     var tile = event.target.closest("[data-lightbox]");
-    if (tile) {
+    if (tile && lightboxModal) {
       $("lightboxImage").src = tile.getAttribute("data-lightbox");
-      $("lightboxImage").alt = tile.getAttribute("data-title");
-      $("lightboxTitle").textContent = tile.getAttribute("data-title");
+      $("lightboxImage").alt = tile.getAttribute("data-title") || "Life Care Clinic";
+      $("lightboxTitle").textContent = tile.getAttribute("data-title") || "Life Care Clinic";
       openModal(lightboxModal);
       return;
     }
     if (event.target.closest("[data-close-modal]") || event.target.classList.contains("modal-backdrop")) closeModals();
   });
-  $("videoOpen").addEventListener("click", function () { openModal(videoModal); });
-  $("videoBook").addEventListener("click", function () {
+  on($("videoOpen"), "click", function () { openModal(videoModal); });
+  on($("videoBook"), "click", function () {
     closeModals();
     var contact = document.getElementById("contact");
     if (contact) contact.scrollIntoView({ behavior: "smooth" });
+    else window.location.href = "contact.html";
   });
   document.addEventListener("keydown", function (event) { if (event.key === "Escape") { closeModals(); closeDrawer(); } });
 

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Our Doctors | Life Care Clinic</title>
+<meta name="description" content="Meet the doctors and specialists at Life Care Clinic and filter the team by the kind of care you are looking for." />
+<meta property="og:title" content="Our Doctors | Life Care Clinic" />
+<meta property="og:description" content="Meet the doctors and specialists at Life Care Clinic and filter the team by the kind of care you are looking for." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="is-internal">
+<main class="site-shell">
+  <header class="site-header site-header--solid" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Life Care Clinic home">
+        <img src="images/logo.png" alt="Life Care Clinic logo" width="150" height="50">
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="specialties.html">Specialties</a>
+        <a href="doctors.html" class="is-active" aria-current="page">Doctors</a>
+        <a href="packages.html">Packages</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a class="button button--primary button--small header-cta" href="contact.html">Contact us <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+      <button class="icon-button menu-button" id="menuOpen" aria-label="Open navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="drawer" aria-label="Mobile navigation">
+    <div class="drawer-top">
+      <a href="index.html" class="brand" aria-label="Life Care Clinic home">
+        <img src="images/logo.png" alt="Life Care Clinic logo" width="150" height="50">
+      </a>
+      <button class="icon-button" id="menuClose" aria-label="Close navigation">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div class="drawer-links">
+      <a href="index.html">Home <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+      <a href="about.html">About <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+      <a href="specialties.html">Specialties <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+      <a href="doctors.html" class="is-active" aria-current="page">Doctors <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+      <a href="packages.html">Packages <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+      <a href="contact.html">Contact <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+    </div>
+    <div class="drawer-note">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+      <span>Thoughtful healthcare, close to home.</span>
+    </div>
+  </aside>
+
+  <section class="page-hero" aria-label="The people who look after you.">
+    <img class="page-hero-image" src="images/doctors-hero.jpg" alt="The Life Care Clinic medical team" width="1600" height="900" />
+    <div class="page-hero-wash"></div>
+    <div class="container page-hero-inner">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">/</span><span>Doctors</span>
+      </nav>
+      <p class="eyebrow eyebrow--light"><span></span>Our doctors</p>
+      <h1>The people who look after you.</h1>
+      <p class="page-hero-copy">A connected team of specialists who share notes, so your care never starts from scratch.</p>
+    </div>
+  </section>
+  <section class="section doctors-listing">
+    <div class="container">
+      <div class="section-top reveal">
+        <div><p class="eyebrow"><span></span>Meet the team</p><h2>Find the right doctor</h2></div>
+        <p class="section-copy">Filter by the kind of care you need.</p>
+      </div>
+      <div class="filter-row" id="doctorFilters" role="group" aria-label="Filter doctors by care type">
+        <button class="filter-pill is-active" data-filter="all" aria-pressed="true">All doctors</button>
+        <button class="filter-pill" data-filter="family" aria-pressed="false">Family medicine</button>
+        <button class="filter-pill" data-filter="internal" aria-pressed="false">Internal medicine</button>
+        <button class="filter-pill" data-filter="women" aria-pressed="false">Women&rsquo;s health</button>
+        <button class="filter-pill" data-filter="children" aria-pressed="false">Children</button>
+        <button class="filter-pill" data-filter="surgery" aria-pressed="false">Bones &amp; movement</button>
+        <button class="filter-pill" data-filter="dental" aria-pressed="false">Dental</button>
+      </div>
+      <div class="doctors-grid" id="doctorGrid">
+        <a class="doctor-card reveal" href="doctor-details.html" data-tag="family">
+          <div class="doctor-image"><img src="images/life-care-doctors.jpg" alt="Dr. Amira Khan, Family Medicine at Life Care Clinic" loading="lazy" width="1200" height="900" style="object-position:center 20%" /><span class="doctor-hover">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
+          <div class="doctor-info"><h3>Dr. Amira Khan</h3><p>Family Medicine</p></div>
+        </a>
+        <a class="doctor-card reveal" href="doctor-details.html" data-tag="internal">
+          <div class="doctor-image"><img src="images/life-care-doctors.jpg" alt="Dr. Daniel Mathews, Internal Medicine at Life Care Clinic" loading="lazy" width="1200" height="900" style="object-position:30% 30%" /><span class="doctor-hover">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
+          <div class="doctor-info"><h3>Dr. Daniel Mathews</h3><p>Internal Medicine</p></div>
+        </a>
+        <a class="doctor-card reveal" href="doctor-details.html" data-tag="women">
+          <div class="doctor-image"><img src="images/life-care-doctors.jpg" alt="Dr. Noor Al Hashimi, Obstetrics & Gynecology at Life Care Clinic" loading="lazy" width="1200" height="900" style="object-position:70% 30%" /><span class="doctor-hover">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
+          <div class="doctor-info"><h3>Dr. Noor Al Hashimi</h3><p>Obstetrics & Gynecology</p></div>
+        </a>
+        <a class="doctor-card reveal" href="doctor-details.html" data-tag="children">
+          <div class="doctor-image"><img src="images/life-care-doctors.jpg" alt="Dr. Layla Haddad, Pediatrics at Life Care Clinic" loading="lazy" width="1200" height="900" style="object-position:20% 40%" /><span class="doctor-hover">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
+          <div class="doctor-info"><h3>Dr. Layla Haddad</h3><p>Pediatrics</p></div>
+        </a>
+        <a class="doctor-card reveal" href="doctor-details.html" data-tag="internal">
+          <div class="doctor-image"><img src="images/life-care-doctors.jpg" alt="Dr. Omar Rahman, Cardiology at Life Care Clinic" loading="lazy" width="1200" height="900" style="object-position:80% 25%" /><span class="doctor-hover">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
+          <div class="doctor-info"><h3>Dr. Omar Rahman</h3><p>Cardiology</p></div>
+        </a>
+        <a class="doctor-card reveal" href="doctor-details.html" data-tag="children">
+          <div class="doctor-image"><img src="images/life-care-doctors.jpg" alt="Dr. Hana Saeed, Developmental Pediatrics at Life Care Clinic" loading="lazy" width="1200" height="900" style="object-position:50% 45%" /><span class="doctor-hover">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
+          <div class="doctor-info"><h3>Dr. Hana Saeed</h3><p>Developmental Pediatrics</p></div>
+        </a>
+        <a class="doctor-card reveal" href="doctor-details.html" data-tag="surgery">
+          <div class="doctor-image"><img src="images/life-care-doctors.jpg" alt="Dr. Yusuf Karim, Orthopedics at Life Care Clinic" loading="lazy" width="1200" height="900" style="object-position:40% 20%" /><span class="doctor-hover">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
+          <div class="doctor-info"><h3>Dr. Yusuf Karim</h3><p>Orthopedics</p></div>
+        </a>
+        <a class="doctor-card reveal" href="doctor-details.html" data-tag="dental">
+          <div class="doctor-image"><img src="images/life-care-doctors.jpg" alt="Dr. Rania Fadel, Dentistry at Life Care Clinic" loading="lazy" width="1200" height="900" style="object-position:60% 40%" /><span class="doctor-hover">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
+          <div class="doctor-info"><h3>Dr. Rania Fadel</h3><p>Dentistry</p></div>
+        </a>
+      </div>
+      <p class="empty-state" id="doctorEmpty" hidden>No doctors match that filter yet. Try another one.</p>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner reveal">
+      <div>
+        <p class="eyebrow eyebrow--gold"><span></span>Next step</p>
+        <h2>Found someone you&rsquo;d like to see?</h2>
+        <p>Request an appointment and mention your preferred doctor.</p>
+      </div>
+      <a class="button button--gold" href="contact.html">Book an appointment <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand brand--light" aria-label="Life Care Clinic home">
+          <span class="brand-copy">
+            <span class="brand-arabic" lang="ar" dir="rtl">عيادة لايف كير</span>
+            <span class="brand-name">Life Care Clinic</span>
+          </span>
+        </a>
+        <p>Thoughtful healthcare for every chapter of life.</p>
+        <div class="footer-social">
+          <a href="#instagram" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+          <a href="#facebook" aria-label="Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#linkedin" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v1.5A6 6 0 0 1 16 8z"/><circle cx="4" cy="4" r="2"/><path d="M2 9h4v12H2z"/></svg></a>
+          <a href="#youtube" aria-label="Youtube"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div><h3>Explore</h3>
+          <a href="about.html">About us</a>
+          <a href="specialties.html">Specialties</a>
+          <a href="doctors.html">Our doctors</a>
+          <a href="packages.html">Health packages</a>
+        </div>
+        <div><h3>Visit</h3>
+          <a href="contact.html">Book an appointment</a><a href="contact.html">Contact us</a><a href="contact.html#locations">Find a clinic</a><a href="contact.html#insurance">Insurance</a>
+        </div>
+        <div><h3>Say hello</h3>
+          <a href="tel:+9718005433">800 LIFE (5433)</a>
+          <a href="mailto:hello@lifecareclinic.ae">hello@lifecareclinic.ae</a>
+          <p>Mon – Sat · 8am – 8pm</p>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Life Care Clinic. All rights reserved.</span>
+      <div><a href="#privacy">Privacy policy</a><a href="#terms">Terms &amp; conditions</a></div>
+      <span class="footer-location">Made with care in the UAE
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+      </span>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+    <div class="lightbox">
+      <button class="modal-close" data-close-modal aria-label="Close image"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      <img id="lightboxImage" src="images/life-care-gallery.jpg" alt="Life Care Clinic" />
+      <p id="lightboxTitle">Life Care Clinic</p>
+    </div>
+  </div>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+  </button>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
